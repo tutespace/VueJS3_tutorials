@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Vue Step 3 - Directives</title></head><body>
+<div class="ml-tutorial">
+  <p>Directives: v-if, v-show, v-for.</p>
+
+  <h3>v-if / v-else</h3>
+  <div class="code-editor">
+    <textarea id="vue3a" rows="16"><!DOCTYPE html>
+<html>
+<head><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script></head>
+<body>
+<div id="app">
+  <button @click="show = !show">Toggle Message</button>
+  <p v-if="show">✅ Vue is awesome!</p>
+  <p v-else>❌ Message is hidden</p>
+</div>
+<script>
+const { createApp } = Vue;
+createApp({ data(){ return { show: true } } }).mount('#app');
+</script>
+</body>
+</html></textarea><br/>
+    <button onclick="runCode('vue3a','out3a')">Run Code ▶</button>
+    <iframe id="out3a" style="width:100%; height:260px; border:1px solid #ccc;"></iframe>
+  </div>
+
+  <h3>v-show</h3>
+  <div class="code-editor">
+    <textarea id="vue3b" rows="14"><!DOCTYPE html>
+<html>
+<head><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script></head>
+<body>
+<div id="app">
+  <button @click="visible = !visible">Toggle Box</button>
+  <div v-show="visible" style="width:100px;height:100px;background:lightgreen;margin-top:10px">Box</div>
+</div>
+<script>
+const { createApp } = Vue;
+createApp({ data(){ return { visible: true } } }).mount('#app');
+</script>
+</body>
+</html></textarea><br/>
+    <button onclick="runCode('vue3b','out3b')">Run Code ▶</button>
+    <iframe id="out3b" style="width:100%; height:220px; border:1px solid #ccc;"></iframe>
+  </div>
+
+  <h3>v-for</h3>
+  <div class="code-editor">
+    <textarea id="vue3c" rows="16"><!DOCTYPE html>
+<html><head><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script></head><body>
+<div id="app">
+  <h3>My Todo List</h3>
+  <ul><li v-for="(todo, index) in todos" :key="index">{{ todo }}</li></ul>
+</div>
+<script>
+const { createApp } = Vue;
+createApp({ data(){ return { todos: ['Learn Vue','Build a project','Master components'] } } }).mount('#app');
+</script></body></html></textarea><br/>
+    <button onclick="runCode('vue3c','out3c')">Run Code ▶</button>
+    <iframe id="out3c" style="width:100%; height:240px; border:1px solid #ccc;"></iframe>
+  </div>
+</div>
+
+<script>
+function runCode(codeId, outputId) {
+  const code = document.getElementById(codeId).value;
+  const iframe = document.getElementById(outputId);
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(code);
+  doc.close();
+}
+</script>
+
+</body></html>

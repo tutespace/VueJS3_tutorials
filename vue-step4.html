@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Vue Step 4 - Methods, Computed, Watchers</title></head><body>
+<div class="ml-tutorial">
+  <p>Methods, Computed, Watchers.</p>
+
+  <h3>Methods</h3>
+  <div class="code-editor">
+    <textarea id="vue4a" rows="18"><!DOCTYPE html><html><head><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script></head><body>
+<div id="app">
+  <h2>{{ message }}</h2>
+  <button @click="reverseMessage">Reverse Message</button>
+</div>
+<script>
+const { createApp } = Vue;
+createApp({
+ data(){ return { message: 'Hello Vue! 🚀' } },
+ methods: { reverseMessage(){ this.message = this.message.split('').reverse().join(''); } }
+}).mount('#app');
+</script></body></html></textarea><br/>
+    <button onclick="runCode('vue4a','out4a')">Run Code ▶</button>
+    <iframe id="out4a" style="width:100%; height:240px; border:1px solid #ccc;"></iframe>
+  </div>
+
+  <h3>Computed</h3>
+  <div class="code-editor">
+    <textarea id="vue4b" rows="18"><!DOCTYPE html><html><head><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script></head><body>
+<div id="app">
+  <h3>Original: {{ message }}</h3>
+  <h3>Uppercase (computed): {{ upperMessage }}</h3>
+  <input v-model="message">
+</div>
+<script>
+const { createApp } = Vue;
+createApp({
+ data(){ return { message: 'Vue is reactive' } },
+ computed:{ upperMessage(){ return this.message.toUpperCase(); } }
+}).mount('#app');
+</script></body></html></textarea><br/>
+    <button onclick="runCode('vue4b','out4b')">Run Code ▶</button>
+    <iframe id="out4b" style="width:100%; height:260px; border:1px solid #ccc;"></iframe>
+  </div>
+
+  <h3>Watchers</h3>
+  <div class="code-editor">
+    <textarea id="vue4c" rows="18"><!DOCTYPE html><html><head><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script></head><body>
+<div id="app">
+  <h3>Type something:</h3>
+  <input v-model="query">
+  <p>{{ result }}</p>
+</div>
+<script>
+const { createApp } = Vue;
+createApp({
+ data(){ return { query:'', result:'Waiting for input...' } },
+ watch:{ query(newVal){ this.result = 'You typed: ' + newVal; } }
+}).mount('#app');
+</script></body></html></textarea><br/>
+    <button onclick="runCode('vue4c','out4c')">Run Code ▶</button>
+    <iframe id="out4c" style="width:100%; height:240px; border:1px solid #ccc;"></iframe>
+  </div>
+</div>
+
+<script>
+function runCode(codeId, outputId) {
+  const code = document.getElementById(codeId).value;
+  const iframe = document.getElementById(outputId);
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(code);
+  doc.close();
+}
+</script>
+
+</body></html>

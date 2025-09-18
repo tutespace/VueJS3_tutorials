@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Vue Step 8 - Pinia</title></head><body>
+<div class="ml-tutorial">
+  <p>Pinia State Management.</p>
+
+  <div class="code-editor">
+    <textarea id="vue8e" rows="28"><!DOCTYPE html>
+<html>
+<head>
+  <title>Pinia CDN Example</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/pinia@2/dist/pinia.iife.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>Counter: {{ counter.count }}</h2>
+    <button @click="counter.increment()">Increment</button>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+    const { createPinia, defineStore } = Pinia;
+
+    const useCounterStore = defineStore('counter', {
+      state: () => ({ count: 0 }),
+      actions: { increment() { this.count++ } }
+    })
+
+    const app = createApp({
+      setup() {
+        const counter = useCounterStore()
+        return { counter }
+      }
+    })
+
+    app.use(createPinia())
+    app.mount('#app')
+  </script>
+</body>
+</html></textarea><br/>
+    <button onclick="runCode('vue8e','out8e')">Run Code ▶</button>
+    <iframe id="out8e" style="width:100%; height:320px; border:1px solid #ccc;"></iframe>
+  </div>
+</div>
+
+<script>
+function runCode(codeId, outputId) {
+  const code = document.getElementById(codeId).value;
+  const iframe = document.getElementById(outputId);
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(code);
+  doc.close();
+}
+</script>
+
+</body></html>

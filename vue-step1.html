@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Vue Step 1 - Introduction & Setup</title></head>
+<body>
+<div class="ml-tutorial">
+  <p>Welcome to the first tutorial in our <b>Vue.js from Scratch</b> series 🌱. 
+  Today we’ll learn <b>what Vue.js is</b>, why it’s popular, and how to set up a simple project.</p>
+
+  <h3>1️⃣ What is Vue.js?</h3>
+  <p>Vue.js is a progressive JavaScript framework for building user interfaces...</p>
+
+  <h3>2️⃣ Your First Vue App (via CDN)</h3>
+  <div class="code-editor">
+    <textarea id="vue1a" rows="14"><!DOCTYPE html>
+<html>
+<head>
+  <title>Hello Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2>{{ message }}</h2>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return { message: "Hello Vue! 🚀" }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html></textarea><br/>
+    <button onclick="runCode('vue1a','out1a')">Run Code ▶</button>
+    <iframe id="out1a" style="width:100%; height:300px; border:1px solid #ccc; margin-top:6px;"></iframe>
+  </div>
+
+  <h3>3️⃣ Setting Up with Vite (Recommended)</h3>
+  <div class="code-editor">
+    <textarea id="vue1b" rows="6"># Run these in your terminal:
+npm create vite@latest my-vue-app
+cd my-vue-app
+npm install
+npm run dev</textarea>
+  </div>
+
+  <h3>✅ Summary</h3>
+  <p>You've learned what Vue is and how to start via CDN or Vite.</p>
+
+  <h3>❓ FAQ</h3>
+  <ul>
+    <li><b>Q:</b> What is Vue.js? <b>A:</b> A lightweight progressive framework.</li>
+    <li><b>Q:</b> Can I use Vue without build tools? <b>A:</b> Yes, via CDN.</li>
+  </ul>
+</div>
+
+<script>
+function runCode(codeId, outputId) {
+  const code = document.getElementById(codeId).value;
+  const iframe = document.getElementById(outputId);
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(code);
+  doc.close();
+}
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Vue.js?","acceptedAnswer":{"@type":"Answer","text":"Vue.js is a progressive JavaScript framework for building interactive user interfaces."}}]}
+</script>
+</body>
+</html>
